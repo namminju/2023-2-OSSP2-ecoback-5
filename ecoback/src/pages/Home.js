@@ -5,7 +5,8 @@ const Home = () => {
     <div>
     <div className="normal" id="normalline" style={{ padding: '5px 7px' }}>
       <div className="title">Eco$Back</div>
-      <div id="menubar_array"> 
+      <div id="menubar_array">    
+
         <line/><line/><line/>
       </div>
     </div>
