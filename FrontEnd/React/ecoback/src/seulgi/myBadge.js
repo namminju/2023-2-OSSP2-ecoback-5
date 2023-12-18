@@ -6,6 +6,8 @@ import {BadgeCountContext} from '../seulgi/BadgeCountContext';
 
 //뱃지 아이콘 생성
 function Badge({badge}){
+    
+    const [bgcnt, setBgcnt] = useState(0);
     const containerStyle = {
         width: '80%', 
         margin:'5%',
@@ -74,24 +76,21 @@ function Badge({badge}){
     }
     console.log("barcodeCounts: ", barcodeCounts.count);
     
-    // useEffect(() => {
-    //     // barcodeCounts가 변경될 때마다 실행
-    //     if (badge.minCount < barcodeCounts.count) {
-    //       // 조건이 참일 경우 badgeCount를 1 증가.
-    //       setBadgeCount(prev => prev + 1);
-    //     }
-    //   }, [barcodeCounts, badge.minCount, setBadgeCount]); // 의존성 배열에 필요한 값들을 넣어주세요.
     
     
-
     let badgeImageSrc;
-  if (badge.id === 6) {
+    
+  
+    if (badge.id === 6) {
     // 6번째 배지인 경우 userPoint를 기준으로 배지획득조건 설정
     badgeImageSrc = userPoint >= 200000 ? require(('../image/bg4.png')) : require('../image/bg9.png');
   } else {
     // 그 외의 배지는 기존 로직을 따르도록(배지카운트로)
     badgeImageSrc = badge.minCount < barcodeCounts.count ? require(`../image/${badge.img}`) : require('../image/bg9.png');
   }
+  // Badge 컴포넌트 내부
+
+
 
   return (
     <div style={containerStyle}>

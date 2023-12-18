@@ -8,18 +8,99 @@ import { BadgeCountContext } from '../seulgi/BadgeCountContext';
 
 
 const MyPage=()=>{
+    let badgCnt=0;
+    const [barcodeCounts, setBarcodeCounts] = useState({ count: 0 });
+    const [userPoint, setUserPoint]=useState({ point: 0 });
+    const access_token=localStorage.getItem('access');
+    //const endpoint='/barcodes/count/';
+
+    useEffect(()=>{
+        fetchData();
+        
+    },[])
+    useEffect(()=>{
+        fetchPointData();
+        
+    },[])
+    /*각 배지별 획득 조건 badges.json 파일에서 확인 가능*/
+    
+    const fetchPointData=async()=>{
+        try{
+            const response=await API.get("/mypage/get_object/",{
+                headers:{
+                    Authorization: `Bearer ${access_token}`,
+                }
+            })
+            setUserPoint({ point:response.data.point});
+            console.log("point:",response.data.point);
+            
+
+        }catch(e){
+            console.log("API 오류: ",e);
+        }
+    }
+
+    const fetchData=async()=>{
+        try{
+            const response=await API.get("/barcodes/count/",{
+                headers:{
+                    Authorization: `Bearer ${access_token}`,
+                }
+            })
+            setBarcodeCounts({ count: response.data.count });
+            console.log(response.data);
+            
+
+        }catch(e){
+            console.log("API 오류: ",e);
+        }
+    }
+    console.log("barcodeCounts: ", barcodeCounts.count);
+    
+    
+    
+    if(barcodeCounts.count>=500){
+        badgCnt=7;
+    } else if(barcodeCounts.count>=100){
+        badgCnt=6;
+    }else if(barcodeCounts.count>=50){
+        badgCnt=5;
+    }else if(barcodeCounts.count>=10){
+        badgCnt=4;
+    }else if(barcodeCounts.count>=8){
+        badgCnt=3;
+    }else if(barcodeCounts.count>=5){
+        badgCnt=2;
+    }else if(barcodeCounts.count>=1){
+        badgCnt=1;
+    }
+    if(userPoint>=200000){
+        badgCnt+=1;
+    }
+    let badgeImageSrc;
+    
+
+    const [bgcnt, setBgcnt] = useState(0);
+
+    useEffect(() => {
+        const storedBgcnt = localStorage.getItem('bgcnt');
+        if (storedBgcnt) {
+            setBgcnt(parseInt(storedBgcnt, 10));
+        }
+    }, []);
+
     const [userInfo, setUserInfo]=useState([]);
     const {badgeCnt}=useContext(BadgeCountContext);
     useEffect(()=>{
         getUserData();
     },[])
     
-    const access_token=localStorage.getItem('access');
-    const endpoint='/mypage/get_object/';
+    //const access_token=localStorage.getItem('access');
+    //const endpoint='/mypage/get_object/';
     const navigate = useNavigate();
     const getUserData=async()=>{
         try{
-            const getUserInfo=await API.get(endpoint, {
+            const getUserInfo=await API.get('/mypage/get_object/', {
                 headers:{
                     Authorization:`Bearer ${access_token}`
                 }
@@ -69,7 +150,7 @@ const MyPage=()=>{
             <hr />
             <div className="badgeCollection">
                 <div id='badgeText'>내가 모은 배지</div>
-                <div id="badgeCount">{badgeCnt}/8</div>
+                <div id="badgeCount">{badgCnt}/8</div>
                 <BadgeGrid />
             </div>
         </div>
