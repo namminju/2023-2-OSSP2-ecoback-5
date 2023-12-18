@@ -123,6 +123,7 @@ const EditProfile=()=>{
        <div>
         <div className="full_container" style={{backgroundColor:"#FFFFFF",paddingBottom:"15px", minHeight:"100vh"}}>
         <TitleBanner />
+
         <hr />
         <div className="profileContainer">
                 <div id="username">{userInfo.name}님의 프로필</div>
@@ -144,9 +145,9 @@ const EditProfile=()=>{
             <div className="inputBox">
                 <form id="submitForm"  onSubmit={handleSubmit}>
                     <label for="name">이름</label>
-                    <input type="text" name="name" placeholder="  이름을 입력해주세요" onChange={handleChange}/><br />
-                    <label for="name">한 줄 소개</label>
-                    <input type="text" name="content" placeholder="  한 줄로 자신을 표현하세요!" onChange={handleChange}/><br />
+                    <input id="inputs" type="text" name="name" placeholder="  이름을 입력해주세요" onChange={handleChange}/><br />
+                    <label  for="name">한 줄 소개</label>
+                    <input id="inputs" type="text" name="content" placeholder="  한 줄로 자신을 표현하세요!" onChange={handleChange}/><br />
                     <div id="btnBox">
                     <button id="submitBtn" onClick={handleSubmit}>프로필 편집</button>
                     </div>
