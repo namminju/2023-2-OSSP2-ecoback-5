@@ -94,14 +94,14 @@ const BuyingPopup = ({ productId, isModalOpen, setIsModalOpen, price }) => {
           <div id="leftPoint">
             {((userInfo.point - price) >= 0) ?
             <div>
-              <p style={{ fontSize: "17px" ,fontWeight:'500'}}>내 포인트 {userInfo.point}</p>
-              <p style={{ fontSize: "17px",fontWeight:'500' }}>상품 가격  {price} </p>
-              <p style={{ fontSize: "17px",fontWeight:'500' }}>잔여포인트  {userInfo.point - price} </p>
+              <p style={{ fontSize: "17px" }}>내 포인트 {userInfo.point}</p>
+              <p style={{ fontSize: "17px" }}>상품 가격  {price} </p>
+              <p style={{ fontSize: "17px" }}>잔여포인트  {userInfo.point - price} </p>
             </div> 
               : <div>
-                <p style={{ fontSize: "23px", color: "red" ,fontWeight:'500'}}> 포인트 부족: 구매 불가 </p>
-                <p style={{ fontSize: "17px", fontWeight:'500' }}>내 포인트  {userInfo.point} </p>
-                <p style={{ fontSize: "17px" ,fontWeight:'500'}}>부족한 포인트  {price-userInfo.point} </p>
+                <p style={{ fontSize: "23px", color: "red" }}> 포인트 부족: 구매 불가 </p>
+                <p style={{ fontSize: "17px"}}>내 포인트  {userInfo.point} </p>
+                <p style={{ fontSize: "17px" }}>부족한 포인트  {price-userInfo.point} </p>
                 </div>}
             <hr />
             <p id="sentence">
@@ -113,10 +113,10 @@ const BuyingPopup = ({ productId, isModalOpen, setIsModalOpen, price }) => {
         <div>
           {(userInfo.point - price) >= 0 ?
             <div>
-              <button id="buy" style={{fontWeight:'500'}} onClick={() => { updatePoint(userInfo.point - price) }}>구매하기</button>
-              <button id="cancel" style={{fontWeight:'500'}} onClick={handleCloseModal} >취소하기</button>
+              <button id="buy" style={{fontWeight:'450'}} onClick={() => { updatePoint(userInfo.point - price) }}>구매하기</button>
+              <button id="cancel" style={{fontWeight:'450'}} onClick={handleCloseModal} >취소하기</button>
             </div>
-            : <button id="close" style={{fontWeight:'500'}} onClick={handleCloseModal}>창닫기</button>}
+            : <button id="close" style={{fontWeight:'450'}} onClick={handleCloseModal}>창닫기</button>}
         </div>
       </Modal>
     </div>
