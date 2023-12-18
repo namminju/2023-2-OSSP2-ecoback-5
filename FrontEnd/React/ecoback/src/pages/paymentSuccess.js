@@ -1,41 +1,63 @@
+
 import Modal from 'react-modal';
 import React from 'react';
 import '../seulgi/sendPhotoModal.css';
+import { useNavigate } from 'react-router-dom';
 
 const PaymentSuccessModal=({isModalOpen, setIsModalOpen})=> {
-    const modalStyle = {
-        content: {
-          borderRadius: "20px",
-          aspectRatio: '1 / 1',
-          maxHeight: "40vh",
-          position: 'fixed',
-          width: '100%',
-          maxWidth: '300px',
-          margin: 0,
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-      },
-        overlay:{
-            backgroundColor:'rgba(0, 0, 0, 0.4)'
-        }
-      };
-    const handleCloseModal = () => {
-        setIsModalOpen(false);
-    }
-    return (
-        <div>
-          <Modal style={modalStyle} isOpen={isModalOpen}>
-          <div className="xbutton">
-          <button id="xbutton" onClick={()=>{handleCloseModal()}}>X</button>
-          </div>
-          <div className="middle">
-            <img style={{width: "50%"}}src="https://img.freepik.com/free-vector/seasonal-sale-discounts-presents-purchase-visiting-boutiques-luxury-shopping-price-reduction-promotional-coupons-special-holiday-offers-vector-isolated-concept-metaphor-illustration_335657-2766.jpg?w=740&t=st=1701356185~exp=1701356785~hmac=8a924dfccef73c6f358e328c09853e251da311964d75089dc3375510ad0c8671" alt="barcode"/>
-            <div className="text"><b>상품 구매가 완료되었습니다.</b></div>
-          </div>
-          </Modal>
+  const modalStyle = {
+    content: {
+      borderRadius: "20px",
+      aspectRatio: '1 / 1',
+      maxHeight: "35vh",
+      position: 'fixed',
+      width: '100%',
+      maxWidth: '300px',
+      margin: 0,
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+    },
+    overlay: {
+      backgroundColor: 'rgba(0, 0, 0, 0.4)'
+    },
+    
+  };
+
+  // 모달 닫기 함수
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  // 내 교환권 페이지로 이동하는 함수
+  const navigate = useNavigate();
+  const goToExchangePage = () => {
+     navigate('../myProduct');
+  };
+
+  return (
+    <Modal style={modalStyle} isOpen={isModalOpen}>
+      <div className="pointViewer">
+        <div id="leftPoint">
+          <div>
+            <p style={{ fontSize: "17px" }}><b>감사합니다.</b></p>
+            <p style={{ fontSize: "17px" }}><b>구매가 완료되었습니다.</b></p>
+          </div> 
+          <hr />
+          <div id="purchase">
+          <p id="sentence">
+            구매하신 상품은 [내 교환권]에서<br></br>
+            확인하실 수 있습니다.</p>
+            </div>
         </div>
-      )
+      </div>
+      <hr />
+      <div>
+        <button id="cancel" onClick={closeModal}>닫기</button>
+        <button id="buy" onClick={goToExchangePage}>내 교환권</button>
+      </div>
+    </Modal>
+  )
 }
 
 export default PaymentSuccessModal;

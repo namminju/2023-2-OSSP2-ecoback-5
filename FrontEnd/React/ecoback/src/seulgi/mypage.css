@@ -90,8 +90,8 @@
     align-items:center;
     justify-content:center;
     background:transparent;
-    width:90%;
-    height: 70%;
+    width:95%;
+    height: 77%;
     aspect-ratio: 1/1;
     position: relative;
     clip-path: polygon(4% 22%, 50% 0, 96% 23%, 96% 79%, 48% 100%, 4% 78%);
@@ -116,7 +116,7 @@
 
   #faceImage{
     width:40%;
-    max-height:40%;
+    height:40%;
     margin:5%;
   }
 .profileContent{

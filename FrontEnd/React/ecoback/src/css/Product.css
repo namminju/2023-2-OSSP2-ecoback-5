@@ -2,6 +2,7 @@ body{
     font-family:"NotoSansKR";
 }
 .productBox{
+    max-height:40%;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -9,7 +10,7 @@ body{
 }
 .Item {
     position: relative;
-    width: 60%;
+    width: 40%;
     margin-top: 15%;
     margin-bottom: 10%;
     background-color: #ffffff;

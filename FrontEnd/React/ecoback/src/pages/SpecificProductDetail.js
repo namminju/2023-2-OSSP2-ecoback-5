@@ -1,6 +1,6 @@
 // Product.jsx
 import React, { useState, useEffect } from 'react';
-import '../css/Product.css';
+import '../css/Product.css'; 
 import TitleBanner from '../components/TitleBanner';
 import BuyingPopup from './BuyingPopup';
 import BackbuttonBar from '../components/BackbuttonBar';
