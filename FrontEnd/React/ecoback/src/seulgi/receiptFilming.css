@@ -79,10 +79,19 @@
 }
 
 #sendPhotoBtn{
-    margin:2% 2% 2% 4%;
+    /* margin:2% 2% 2% 4%;
     border-radius:5vw;
     background-color:rgb(99, 200, 119);
-    width: 90%;
+    width: 90%; */
+    border-radius: 10px;
+    border-style:none;
+    width:95%;
+    height:40px;
+    color:#FFFFFF;
+    background-color: #8FD36F;
+    aspect-ratio: 5 / 1;
+    margin:7px;
+    box-shadow:5px 5px 5px #C8C8C8;
 }
 
 /*카메라 세로로 보이게*/

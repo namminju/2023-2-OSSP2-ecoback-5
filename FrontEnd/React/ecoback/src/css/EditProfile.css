@@ -50,7 +50,7 @@ input{
 }
 #inputs{
     box-sizing: border-box;
-    padding: 0vw 0vw 0vw 1vw;
+    padding: 0vw 0vw 0vw 20px;
 }
 .faceImage{
     position:relative;
