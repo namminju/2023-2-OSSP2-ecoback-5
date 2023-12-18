@@ -44,14 +44,14 @@
 
 #badgeText{
     font-family:"NotoSansKR";
-    font-weight:bold;
+    
     font-size:19px;
     margin: 22px 0 0 18px;
 }
 
 #badgeCount{
     font-family:"NotoSansKR";
-    font-weight:bold;
+    
     font-size:18px;
     margin: 0 20px 0 0;
     text-align:right;
