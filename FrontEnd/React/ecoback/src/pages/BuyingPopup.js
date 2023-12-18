@@ -99,7 +99,7 @@ const BuyingPopup = ({ productId, isModalOpen, setIsModalOpen, price }) => {
               <p style={{ fontSize: "17px" }}>잔여포인트  {userInfo.point - price} </p>
             </div> 
               : <div>
-                <p style={{ fontSize: "23px", color: "red" }}> 포인트 부족: 구매 불가 </p>
+                <p style={{ fontSize: "23px", color: "red"  }}> 포인트 부족: 구매 불가 </p>
                 <p style={{ fontSize: "17px"}}>내 포인트  {userInfo.point} </p>
                 <p style={{ fontSize: "17px" }}>부족한 포인트  {price-userInfo.point} </p>
                 </div>}
