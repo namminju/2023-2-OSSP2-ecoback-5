@@ -10,7 +10,7 @@ function Start() {
   return (
     <div className="full_container">
       <center>
-        <div id="logo">
+        <div id="logo" style={{paddingTop:'4%'}}>
                 <img id="logo" src={logo} alt="logo" />
                 일회용컵으로 힘들어 하고 있는 바다거북이를 지켜주세요!
             </div>
