@@ -4,6 +4,7 @@ import React from 'react';
 import '../seulgi/sendPhotoModal.css';
 import { useNavigate } from 'react-router-dom';
 
+
 const PaymentSuccessModal=({isModalOpen, setIsModalOpen})=> {
   const modalStyle = {
     content: {
@@ -52,7 +53,7 @@ const PaymentSuccessModal=({isModalOpen, setIsModalOpen})=> {
         </div>
       </div>
       <hr />
-      <div>
+      <div id="btns">
         <button id="cancel" onClick={closeModal}>닫기</button>
         <button id="buy" onClick={goToExchangePage}>내 교환권</button>
       </div>
