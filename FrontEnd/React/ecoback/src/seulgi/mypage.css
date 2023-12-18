@@ -115,10 +115,14 @@
   }
 
   #faceImage{
-    width:40%;
-    height:40%;
-    margin:5%;
-  }
+    width: 40px;
+    height: 160px; 
+    margin: 5%;
+   
+    object-fit: cover;
+}
+
+  
 .profileContent{
   display:flex;
   flex-direction:column;
