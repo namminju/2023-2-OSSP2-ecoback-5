@@ -51,7 +51,7 @@ const Product = () => {
           </div>
           <div className="pricetag">
             <div id="productname" style={{ fontSize: '20px' }}>{product.name}<br /></div>
-            <div style={{ fontSize: '25px' }}><b>{product.price} 원</b></div>
+            <div style={{ fontSize: '25px', fontWeight:'550' ,textAlign:'center'}}><div>{product.price} 원</div></div>
           </div>
         </div>
       </div>
