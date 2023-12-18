@@ -8,7 +8,7 @@ import '../css/Start.css'; // 스타일 파일 경로
 
 function Start() {
   return (
-    <div className="full_container">
+    <div className="full_container1">
       <center>
         <div id="logo">
                 <img id="logo" src={logo} alt="logo" />

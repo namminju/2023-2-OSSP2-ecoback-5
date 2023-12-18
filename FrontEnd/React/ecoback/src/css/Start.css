@@ -8,7 +8,11 @@
     width: 80%; /* 원하는 너비로 설정 */
 
 }
+.full_container1{
 
+     margin-top: -50px; 
+
+}
 #logo{
     font-family: "NotoSansKR";
     font-size: 12px;
