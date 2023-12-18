@@ -41,6 +41,7 @@ const BuyingPopup = ({ productId, isModalOpen, setIsModalOpen, price }) => {
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
+      padding: '5px'
     },
     overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.4)'
@@ -89,8 +90,8 @@ const BuyingPopup = ({ productId, isModalOpen, setIsModalOpen, price }) => {
   return (
     <div>
       <PaymentSuccessModal isModalOpen={paymentSuccessModalOpen} setIsModalOpen={setPaymentSuccessModalOpen} />
-      <Modal style={modalStyle} isOpen={isModalOpen}>
-        <div className="pointViewer">
+      <Modal style={modalStyle} isOpen={isModalOpen} >
+        <div style={{textAlign:'center'}}>
           <div id="leftPoint">
             {((userInfo.point - price) >= 0) ?
             <div>
@@ -112,7 +113,7 @@ const BuyingPopup = ({ productId, isModalOpen, setIsModalOpen, price }) => {
         <hr />
         <div>
           {(userInfo.point - price) >= 0 ?
-            <div>
+            <div style={{paddingTop: '5px'}}>
               <button id="buy" style={{fontWeight:'450'}} onClick={() => { updatePoint(userInfo.point - price) }}>구매하기</button>
               <button id="cancel" style={{fontWeight:'450'}} onClick={handleCloseModal} >취소하기</button>
             </div>
