@@ -52,14 +52,14 @@ const MyPage=()=>{
                 <div class="profileContent">
                     <div style={{textAlign:"center", margin:"3% 0% 0% 0%"}}>한 줄 소개</div>
                     <hr id="contentHR" />
-                    <div style={{textAlign:"center", fontWeight:"bold"}}>{userInfo.content}</div>
+                    <div style={{textAlign:"center"}}>{userInfo.content}</div>
 
                 </div>
                 <div className="faceImage"  style={{marginTop:'5%', padding: 'auto'}}>
                     <img id="faceImage" 
                     src={userInfo.image ? userInfo.image : require("../image/defaultProfile.png")} 
                     alt="faceImg" />
-                    <p style={{fontSize:"16px"}}><b>{formDate(userInfo.created_at)}부터 함께하는 중</b></p>
+                    <p style={{fontSize:"16px"}}><div>{formDate(userInfo.created_at)}부터 함께하는 중</div></p>
 
                     <Link to="/editprofilepage">
                     <button id="editProfile">프로필 편집</button>

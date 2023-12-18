@@ -13,7 +13,7 @@
 }
   #username{
     font-family: "NotoSansKR";
-    font-weight:bold;
+    font-weight:550;
     font-size:19px;
     padding-left: 17px;
 }
@@ -44,14 +44,14 @@
 
 #badgeText{
     font-family:"NotoSansKR";
-    font-weight:bold;
+    font-weight:550;
     font-size:19px;
     margin: 22px 0 0 18px;
 }
 
 #badgeCount{
     font-family:"NotoSansKR";
-    font-weight:bold;
+    font-weight:550;
     font-size:18px;
     margin: 0 20px 0 0;
     text-align:right;
@@ -69,7 +69,7 @@
 
 #badgeName{
     font-size:14px;
-        font-weight: bold;
+        font-weight: 550;
         text-align: center;
         font-family: "NotoSansKR";
 }
