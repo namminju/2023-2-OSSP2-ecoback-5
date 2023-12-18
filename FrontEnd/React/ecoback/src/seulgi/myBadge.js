@@ -16,6 +16,7 @@ function Badge({badge}){
     };
     const {badgeCnt, setBadgeCnt}=useContext(BadgeCountContext);
     const [barcodeCounts, setBarcodeCounts] = useState({ count: 0 });
+    const [userPoint, setUserPoint]=useState([]);
     //setBadgeCnt(0);
     useEffect(()=>{
         setBadgeCnt(0);
@@ -32,8 +33,30 @@ function Badge({badge}){
     
     useEffect(()=>{
         fetchData();
+        
     },[])
-    /*각 배지별 획득 조건이 아직 정해지지 않아서 바코드 객체 count 정보를 우선 가져와서 임시적으로 설정해놨습니다.*/
+    useEffect(()=>{
+        fetchPointData();
+        
+    },[])
+    /*각 배지별 획득 조건 badges.json 파일에서 확인 가능*/
+    
+    const fetchPointData=async()=>{
+        try{
+            const response=await API.get("/mypage/get_object/",{
+                headers:{
+                    Authorization: `Bearer ${access_token}`,
+                }
+            })
+            setUserPoint({ point:response.data.point});
+            console.log("point:",response.data.point);
+            
+
+        }catch(e){
+            console.log("API 오류: ",e);
+        }
+    }
+
     const fetchData=async()=>{
         try{
             const response=await API.get(endpoint,{
@@ -61,19 +84,23 @@ function Badge({badge}){
     
     
 
-    return (
-        <div style={containerStyle}>
-            <div id="hexagon">
-                {console.log("minCount: ",badge.minCount)}
-                
-            {(badge.minCount<barcodeCounts.count)? <img id="badgeImg" src={require(`../image/${badge.img}`)} alt={badge.name} /> : <img id="badgeImg" src={require('../image/badge_unlock.png')} alt={badge.name} />}
-         
-            
-            </div>
-            
-            <p id="badgeName">{badge.name}</p>
-        </div>
-    );
+    let badgeImageSrc;
+  if (badge.id === 6) {
+    // 6번째 배지인 경우 userPoint를 기준으로 배지획득조건 설정
+    badgeImageSrc = userPoint >= 100000 ? require(('../image/bg4.png')) : require('../image/bg9.png');
+  } else {
+    // 그 외의 배지는 기존 로직을 따르도록(배지카운트로)
+    badgeImageSrc = badge.minCount < barcodeCounts.count ? require(`../image/${badge.img}`) : require('../image/bg9.png');
+  }
+
+  return (
+    <div style={containerStyle}>
+      <div id="hexagon">
+        <img id="badgeImg" src={badgeImageSrc} alt={badge.name} />
+      </div>
+      <p id="badgeName">{badge.name}</p>
+    </div>
+  );
 }
 
 //map함수로 badges 순회하며 뱃지그리드 생성

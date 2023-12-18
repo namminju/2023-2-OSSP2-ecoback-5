@@ -49,13 +49,16 @@ input{
     aspect-ratio: 3 / 1;
 }
 
-#faceImage{
-    min-width: 30vw;
-    min-height:30vw;
-    margin:5vw;
+.faceImage{
+    position:relative;
     border-radius:50%;
-    border-style:solid 1px;
 }
+#faceImage{
+    border-radius:50%;
+    width:40%;
+    max-height:40%;
+    margin:5%;
+  }
 
 input::placeholder{
     color:#E0E0E0;

@@ -21,10 +21,7 @@ const BuyingPopup = ({ productId, isModalOpen, setIsModalOpen, price }) => {
           Authorization: `Bearer ${access_token}`,
         },
       });
-      // setUserInfo({
-      //   ...response.data,
-      //   point: 50000 // 구매모달 띄우기용
-      // });
+      
       setUserInfo(response.data);
       console.log("user 정보: ", response.data);
     } catch (e) {

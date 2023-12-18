@@ -1,10 +1,10 @@
 [
- {"id":1, "name":"실천의 시작", "img":"badge_earth.png", "minCount":1},
-    {"id":2, "name": "텀블러 홀릭", "img":"badge_tumbler.png", "minCount":5},
-    {"id":3, "name": "환경 지킴이", "img":"ecosystem.png", "minCount":8},
-    {"id":4, "name": "포인트 재벌", "img":"rich.png", "minCount":30},
-    {"id":5, "name": "10회 달성", "img":"badge_10.png", "minCount":10},
-    {"id":6, "name": "50회 달성", "img":"badge_50.png", "minCount":50},
-    {"id":7, "name": "100회 달성", "img":"100.png", "minCount":100},
-    {"id":8, "name": "500회 달성", "img":"500.png", "minCount":500}
+ {"id":1, "name":"실천의 시작", "img":"bg1.png", "minCount":1},
+    {"id":2, "name": "텀블러 홀릭", "img":"bg2.png", "minCount":5},
+    {"id":3, "name": "환경 지킴이", "img":"bg3.png", "minCount":8},
+    {"id":4, "name": "포인트 재벌", "img":"bg4.png", "minCount":30},
+    {"id":5, "name": "10회 달성", "img":"bg5.png", "minCount":10},
+    {"id":6, "name": "50회 달성", "img":"bg6.png", "minCount":50},
+    {"id":7, "name": "100회 달성", "img":"bg7.png", "minCount":100},
+    {"id":8, "name": "500회 달성", "img":"bg8.png", "minCount":500}
 ]
