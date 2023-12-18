@@ -9,15 +9,17 @@ const PaymentSuccessModal=({isModalOpen, setIsModalOpen})=> {
   const modalStyle = {
     content: {
       borderRadius: "20px",
-      aspectRatio: '1 / 1',
+      
       maxHeight: "35vh",
       position: 'fixed',
       width: '100%',
+      aspectRatio: '1 / 1',
       maxWidth: '300px',
       margin: 0,
       top: '50%',
       left: '50%',
       transform: 'translate(-50%, -50%)',
+      
     },
     overlay: {
       backgroundColor: 'rgba(0, 0, 0, 0.4)'
@@ -38,7 +40,7 @@ const PaymentSuccessModal=({isModalOpen, setIsModalOpen})=> {
 
   return (
     <Modal style={modalStyle} isOpen={isModalOpen}>
-      <div className="pointViewer">
+      <div className="pointViewer"  style={{aspectRatio: '1/1'}}>
         <div id="leftPoint">
           <div>
             <p style={{ fontSize: "17px" }}><b>감사합니다.</b></p>
