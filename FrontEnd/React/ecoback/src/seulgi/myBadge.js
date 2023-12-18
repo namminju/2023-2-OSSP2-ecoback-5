@@ -16,7 +16,7 @@ function Badge({badge}){
     };
     const {badgeCnt, setBadgeCnt}=useContext(BadgeCountContext);
     const [barcodeCounts, setBarcodeCounts] = useState({ count: 0 });
-    const [userPoint, setUserPoint]=useState([]);
+    const [userPoint, setUserPoint]=useState({ point: 0 });
     //setBadgeCnt(0);
     useEffect(()=>{
         setBadgeCnt(0);
@@ -75,9 +75,9 @@ function Badge({badge}){
     console.log("barcodeCounts: ", barcodeCounts.count);
     
     // useEffect(() => {
-    //     // barcodeCounts가 변경될 때마다 실행됩니다.
+    //     // barcodeCounts가 변경될 때마다 실행
     //     if (badge.minCount < barcodeCounts.count) {
-    //       // 조건이 참일 경우 badgeCount를 1 증가시킵니다.
+    //       // 조건이 참일 경우 badgeCount를 1 증가.
     //       setBadgeCount(prev => prev + 1);
     //     }
     //   }, [barcodeCounts, badge.minCount, setBadgeCount]); // 의존성 배열에 필요한 값들을 넣어주세요.
@@ -87,7 +87,7 @@ function Badge({badge}){
     let badgeImageSrc;
   if (badge.id === 6) {
     // 6번째 배지인 경우 userPoint를 기준으로 배지획득조건 설정
-    badgeImageSrc = userPoint >= 100000 ? require(('../image/bg4.png')) : require('../image/bg9.png');
+    badgeImageSrc = userPoint >= 200000 ? require(('../image/bg4.png')) : require('../image/bg9.png');
   } else {
     // 그 외의 배지는 기존 로직을 따르도록(배지카운트로)
     badgeImageSrc = badge.minCount < barcodeCounts.count ? require(`../image/${badge.img}`) : require('../image/bg9.png');

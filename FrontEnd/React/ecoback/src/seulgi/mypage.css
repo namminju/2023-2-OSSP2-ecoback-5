@@ -64,7 +64,7 @@
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: repeat(3,1fr);
     justify-items: center;
-    margin:20px 0;
+    margin:20px 2px 2px 0px;
   }
 
 #badgeName{
@@ -90,7 +90,7 @@
     align-items:center;
     justify-content:center;
     background:transparent;
-    width:95%;
+    width:90%;
     height: 77%;
     aspect-ratio: 1/1;
     position: relative;
