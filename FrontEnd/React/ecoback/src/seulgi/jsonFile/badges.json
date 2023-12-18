@@ -8,3 +8,4 @@
     {"id":7, "name": "100회 달성", "img":"bg7.png", "minCount":100},
     {"id":8, "name": "500회 달성", "img":"bg8.png", "minCount":500}
 ]
+

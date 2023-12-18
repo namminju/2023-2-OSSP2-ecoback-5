@@ -9,13 +9,15 @@ import { BadgeCountContext } from '../seulgi/BadgeCountContext';
 
 const MyPage=()=>{
     let badgCnt=0;
+    const [userId, setUserId]=useState({id:0});
     const [barcodeCounts, setBarcodeCounts] = useState({ count: 0 });
     const [userPoint, setUserPoint]=useState({ point: 0 });
     const access_token=localStorage.getItem('access');
     //const endpoint='/barcodes/count/';
 
     useEffect(()=>{
-        fetchData();
+        //fetchData();
+        fetchBarcodeData();
         
     },[])
     useEffect(()=>{
@@ -23,6 +25,25 @@ const MyPage=()=>{
         
     },[])
     /*각 배지별 획득 조건 badges.json 파일에서 확인 가능*/
+        console.log("barcodeCounts: ", barcodeCounts.count);
+    const fetchBarcodeData=async()=>{
+        try{
+            const response=await API.get("/barcodes/",{
+                headers:{
+                    Authorization: `Bearer ${access_token}`,
+                }
+            })
+            const matchUserCnt=response.data.filter(barcode => barcode.writer === userId).length;
+            console.log("userID: ",userId);
+            setBarcodeCounts({ count: matchUserCnt });
+            console.log(response.data);
+            
+
+        }catch(e){
+            console.log("API 오류: ",e);
+        }
+    }
+    console.log("barcodeCounts: ", barcodeCounts.count);
     
     const fetchPointData=async()=>{
         try{
@@ -40,22 +61,22 @@ const MyPage=()=>{
         }
     }
 
-    const fetchData=async()=>{
-        try{
-            const response=await API.get("/barcodes/count/",{
-                headers:{
-                    Authorization: `Bearer ${access_token}`,
-                }
-            })
-            setBarcodeCounts({ count: response.data.count });
-            console.log(response.data);
+    // const fetchData=async()=>{
+    //     try{
+    //         const response=await API.get("/barcodes/count/",{
+    //             headers:{
+    //                 Authorization: `Bearer ${access_token}`,
+    //             }
+    //         })
+    //         setBarcodeCounts({ count: response.data.count });
+    //         console.log(response.data);
             
 
-        }catch(e){
-            console.log("API 오류: ",e);
-        }
-    }
-    console.log("barcodeCounts: ", barcodeCounts.count);
+    //     }catch(e){
+    //         console.log("API 오류: ",e);
+    //     }
+    // }
+    // console.log("barcodeCounts: ", barcodeCounts.count);
     
     
     
@@ -107,6 +128,8 @@ const MyPage=()=>{
             })
             console.log("getUserInfo:", getUserInfo.data);
             setUserInfo(getUserInfo.data);
+            setUserId(getUserInfo.data.id);
+            console.log(getUserInfo.data.id);
 
         }catch(e){
             console.log("get-API 오류: ",e);
@@ -151,7 +174,7 @@ const MyPage=()=>{
             <div className="badgeCollection">
                 <div id='badgeText'>내가 모은 배지</div>
                 <div id="badgeCount">{badgCnt}/8</div>
-                <BadgeGrid />
+                <BadgeGrid badgeCnt={barcodeCounts.count}/>
             </div>
         </div>
         </div>
