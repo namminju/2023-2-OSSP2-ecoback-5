@@ -35,6 +35,20 @@ body{
     align-items: center;
     justify-content: center;
 }
+.barcode2{
+    position: relative;
+    width: 60%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    background-color: transparent;
+    border-radius: 10px;
+    aspect-ratio: 3 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
 .barcode_image {
     position: relative;
     width: 100%;

@@ -64,21 +64,18 @@ const Product = () => {
         <div className="pricetag">
             <div id="productname" style={{ fontSize: '20px' }}>{product.name}<br /></div>
         </div>
-        <div className="barcode">
+        <div className="barcode2">
             <img 
-            className='barcode_image'
-            id="itemImg" src={API.defaults.baseURL+product.product_code} alt={product.name+' 바코드'} />
+            className='barcodeimage'
+            src={require('../image/buyingb.png')} />
         </div>
         </div>
       </div>
       <br/><br/>
-
-      <div className="btnBox">
-        <button id="buyBtn" onClick={handleOpenModal}>
-          <b style={{ fontSize: '15px' }}>구매하기</b>
-        </button>
-        <BuyingPopup productId={id} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} price={product.price} />
+      <div>
+        <StorePointDisappear />
       </div>
+      
     </div>
   );
 };
