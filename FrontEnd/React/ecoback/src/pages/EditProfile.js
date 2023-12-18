@@ -137,7 +137,7 @@ const EditProfile=()=>{
                 <img id="faceImage" 
                     src={userInfo.image ? userInfo.image : require("../image/defaultProfile.png")}
                     alt="faceImg" />
-                    <p style={{fontSize:"16px"}}><b>{formDate(userInfo.created_at)}부터 함께하는 중</b></p>
+                    <p style={{fontSize:"16px"}}><div>{formDate(userInfo.created_at)}부터 함께하는 중</div></p>
                     <button id="editProfile" onClick={handleAlbumClick}>사진 변경</button>
                 </div>
             </div>

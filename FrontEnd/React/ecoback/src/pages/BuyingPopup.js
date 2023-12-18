@@ -94,14 +94,14 @@ const BuyingPopup = ({ productId, isModalOpen, setIsModalOpen, price }) => {
           <div id="leftPoint">
             {((userInfo.point - price) >= 0) ?
             <div>
-              <p style={{ fontSize: "17px" }}>내 포인트 <b>{userInfo.point}</b></p>
-              <p style={{ fontSize: "17px" }}>상품 가격 <b>{price}</b></p>
-              <p style={{ fontSize: "17px" }}>잔여포인트 <b>{userInfo.point - price}</b></p>
+              <p style={{ fontSize: "17px" }}>내 포인트 {userInfo.point}</p>
+              <p style={{ fontSize: "17px" }}>상품 가격  {price} </p>
+              <p style={{ fontSize: "17px" }}>잔여포인트  {userInfo.point - price} </p>
             </div> 
               : <div>
-                <p style={{ fontSize: "23px", color: "red" }}><b>포인트 부족: 구매 불가</b></p>
-                <p style={{ fontSize: "17px" }}>내 포인트 <b>{userInfo.point}</b></p>
-                <p style={{ fontSize: "17px" }}>부족한 포인트 <b>{price-userInfo.point}</b></p>
+                <p style={{ fontSize: "23px", color: "red"  }}> 포인트 부족: 구매 불가 </p>
+                <p style={{ fontSize: "17px"}}>내 포인트  {userInfo.point} </p>
+                <p style={{ fontSize: "17px" }}>부족한 포인트  {price-userInfo.point} </p>
                 </div>}
             <hr />
             <p id="sentence">
@@ -113,10 +113,10 @@ const BuyingPopup = ({ productId, isModalOpen, setIsModalOpen, price }) => {
         <div>
           {(userInfo.point - price) >= 0 ?
             <div>
-              <button id="buy" onClick={() => { updatePoint(userInfo.point - price) }}>구매하기</button>
-              <button id="cancel" onClick={handleCloseModal}>취소하기</button>
+              <button id="buy" style={{fontWeight:'450'}} onClick={() => { updatePoint(userInfo.point - price) }}>구매하기</button>
+              <button id="cancel" style={{fontWeight:'450'}} onClick={handleCloseModal} >취소하기</button>
             </div>
-            : <button id="close" onClick={handleCloseModal}>창닫기</button>}
+            : <button id="close" style={{fontWeight:'450'}} onClick={handleCloseModal}>창닫기</button>}
         </div>
       </Modal>
     </div>

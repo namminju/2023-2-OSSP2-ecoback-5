@@ -10,7 +10,7 @@ function Start() {
   return (
     <div className="full_container">
       <center>
-        <img id="logo" src={logo} alt="logo" />
+        <img id="logo" src={logo} alt="logo" style={{padding:'0'}} />
         <img id="iphone" src={iphone} alt="iphone" />
         <Link to="/login">
           <img id="logintostart" src={logintostart} alt="Go to Login" />
