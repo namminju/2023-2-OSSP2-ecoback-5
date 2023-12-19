@@ -8,37 +8,108 @@ import { BadgeCountContext } from '../seulgi/BadgeCountContext';
 
 
 const MyPage=()=>{
+    
+    
     let badgCnt=0;
-    const [userId, setUserId]=useState({id:0});
-    const [barcodeCounts, setBarcodeCounts] = useState({ count: 0 });
+    const [userId, setUserId]=useState(0);
+    const [writer, setWriter]=useState({writer:""});
+    const [barcodeCounts, setBarcodeCounts] = useState({count:0});
     const [userPoint, setUserPoint]=useState({ point: 0 });
     const access_token=localStorage.getItem('access');
-    //const endpoint='/barcodes/count/';
-
+    const navigate = useNavigate();
     useEffect(()=>{
-        //fetchData();
-        fetchBarcodeData();
+        getUserData();
+    
         
     },[])
+    const getUserData=async()=>{
+        try{
+            const getUserInfo=await API.get('/mypage/get_object/', {
+                headers:{
+                    Authorization:`Bearer ${access_token}`
+                }
+            })
+            console.log("getUserInfo:", getUserInfo.data);
+            setUserInfo(getUserInfo.data);
+            setUserId(getUserInfo.data.id);
+            console.log(getUserInfo.data.id);
+
+        }catch(e){
+            console.log("get-API 오류: ",e);
+            navigate('/');
+        }
+    }
+    useEffect(() => {
+        fetchBarcodeData();
+        if (userId) { // userId가 0이 아니라면(즉, 유효한 값이라면) getUserBarcData를 호출합니다.
+            getUserBarcData();
+        }
+    }, [userId]);
+    const getUserBarcData=async()=>{
+        try{
+            const getUserInfo=await API.get('/barcodes/', {
+                headers:{
+                    Authorization:`Bearer ${access_token}`
+                }
+            })
+            console.log("바코드writer:", getUserInfo.data.writer);
+            setWriter(getUserInfo.data);
+            console.log("id",userId);
+            console.log("wirteir",getUserInfo.data);
+           
+            getUserInfo.data.forEach(barcode => {
+                // barcode.writer와 userId가 일치하는지 확인
+                console.log("writ:",barcode.writer);
+                console.log(userId);
+                if(barcode.writer === 39) {
+                    console.log('badgCnt:',badgCnt);
+                    badgCnt += 1; // 일치하면 cnt를 증가
+                }
+            });
+
+        }catch(e){
+            console.log("get-API 오류: ",e);
+            navigate('/');
+        }
+    }
+
+    const formDate=(dateString)=>{
+        const date=new Date(dateString);
+        const year=date.getFullYear();
+        const month=date.getMonth()+1;
+        const day=date.getDate();
+        return `${year}년 ${month}월 ${day}일`
+    }
+    const DefaultImageUrl="../image/defaultProfile.png"
+    //const endpoint='/barcodes/count/';
+
+    // useEffect(()=>{
+    //     //fetchData();
+    //     fetchBarcodeData();
+        
+    // },[])
     useEffect(()=>{
+        getUserData();
         fetchPointData();
+        getUserBarcData();
         
     },[])
     /*각 배지별 획득 조건 badges.json 파일에서 확인 가능*/
         console.log("barcodeCounts: ", barcodeCounts.count);
     const fetchBarcodeData=async()=>{
         try{
-            const response=await API.get("/barcodes/",{
+            const response=await API.get("/barcodes/count/",{
                 headers:{
                     Authorization: `Bearer ${access_token}`,
                 }
             })
-            const matchUserCnt=response.data.filter(barcode => barcode.writer === userId).length;
+            const matchUserCnt=response.data.count;
+            console.log(matchUserCnt);
             console.log("userID: ",userId);
             setBarcodeCounts({ count: matchUserCnt });
+            console.log("바코드개수",response.data);
             console.log(response.data);
             
-
         }catch(e){
             console.log("API 오류: ",e);
         }
@@ -118,32 +189,7 @@ const MyPage=()=>{
     
     //const access_token=localStorage.getItem('access');
     //const endpoint='/mypage/get_object/';
-    const navigate = useNavigate();
-    const getUserData=async()=>{
-        try{
-            const getUserInfo=await API.get('/mypage/get_object/', {
-                headers:{
-                    Authorization:`Bearer ${access_token}`
-                }
-            })
-            console.log("getUserInfo:", getUserInfo.data);
-            setUserInfo(getUserInfo.data);
-            setUserId(getUserInfo.data.id);
-            console.log(getUserInfo.data.id);
-
-        }catch(e){
-            console.log("get-API 오류: ",e);
-            navigate('/');
-        }
-    }
-    const formDate=(dateString)=>{
-        const date=new Date(dateString);
-        const year=date.getFullYear();
-        const month=date.getMonth()+1;
-        const day=date.getDate();
-        return `${year}년 ${month}월 ${day}일`
-    }
-    const DefaultImageUrl="../image/defaultProfile.png"
+    
     
     return (
         <div className="full_container" style={{backgroundColor:"#FFFFFF",paddingBottom:"15px", minHeight:"100vh"}}>
