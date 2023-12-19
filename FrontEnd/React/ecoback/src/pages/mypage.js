@@ -61,7 +61,7 @@ const MyPage=()=>{
                 // barcode.writer와 userId가 일치하는지 확인
                 console.log("writ:",barcode.writer);
                 console.log(userId);
-                if(barcode.writer === 39) {
+                if(barcode.writer === userId) {
                     console.log('badgCnt:',badgCnt);
                     badgCnt += 1; // 일치하면 cnt를 증가
                 }
